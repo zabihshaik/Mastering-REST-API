@@ -26,7 +26,7 @@ const products = [
 // @method GET
 // @route  /products
 
-app.get("/products", (req, res) => {
+router.get("/products", (req, res) => {
    res.send(products);
  });
 
@@ -34,7 +34,7 @@ app.get("/products", (req, res) => {
 // @method GET
 // @route  /products/:id
 
-app.get("/products/:id", (req, res) => {
+router.get("/products/:id", (req, res) => {
    const id = req.params.id;
    const product = products.find((product) => product.id === parseInt(id));
    res.send(product);
@@ -44,7 +44,7 @@ app.get("/products/:id", (req, res) => {
 // @method POST
 // @route  /products
 
- app.post("/products", (req, res) => {
+ router.post("/products", (req, res) => {
    const product = req.body;
    product.id = products.length + 1;
    products.push(product);
@@ -55,7 +55,7 @@ app.get("/products/:id", (req, res) => {
 // @method PUT
 // @route  /products/:id
 
-app.put("/products/:id", (req, res) => {
+router.put("/products/:id", (req, res) => {
    const product = req.body;
    const id = req.params.id;
    const dbProduct = products[parseInt(id) - 1];
@@ -67,7 +67,7 @@ app.put("/products/:id", (req, res) => {
 // @method DELETE
 // @route  /products/:id
 
-app.delete("/products/:id", (req, res) => {
+router.delete("/products/:id", (req, res) => {
    const id = req.params.id;
    products.splice(parseInt(id) - 1, 1);
    res.send({ success: true });
